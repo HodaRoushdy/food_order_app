@@ -4,6 +4,7 @@ import { BsCart4 } from "react-icons/bs";
 import { useCartHook } from '../../hooks/useCartHook';
 import styles from './modal.module.css';
 
+
 const ModalComponent = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,10 +44,10 @@ const ModalComponent = () => {
                             <span>{quantity}</span>
                                             
                             <div style={{display:'flex',flexDirection:'column',gap:'0.5rem'}}>
-                            <button>
+                            <button onClick={()=> dispatch({type:'increaseQuantity', payload: meal.id})}>
                                 + 
                             </button>
-                            <button>
+                            <button onClick={()=> dispatch({type:'decreaseQuantity', payload: meal.id})}>
                                 -
                             </button>
                             </div>

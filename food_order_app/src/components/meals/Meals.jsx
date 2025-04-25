@@ -5,7 +5,7 @@ import { useCartHook } from "../../hooks/useCartHook";
 const Meals = () => {
 
     const [meals, setMeals] = useState([]);
-    const { state, dispatch } = useCartHook();
+    const { dispatch } = useCartHook();
 
     useEffect(() => {
         const fetchMeals = async () => {
