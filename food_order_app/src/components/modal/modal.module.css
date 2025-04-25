@@ -1,0 +1,20 @@
+.itemWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shoppingCartItemImg img{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+}
+.itemInfo{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+}
+.itemInfo h4{
+    line-height: 0.5rem;
+}

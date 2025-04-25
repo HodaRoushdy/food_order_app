@@ -1,0 +1,43 @@
+.mealsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.mealCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    background-color: beige;
+    overflow: scroll;
+    transition: transform .2s;
+
+}
+.mealCard:hover {
+    transform: scale(1.1);
+}
+ .mealCard img:hover{
+    transform: scale(1.2);
+ }
+.mealCard img{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 1rem;
+        transition: transform .2s;
+}
+.mealCard h3, .mealCard p{
+    text-align: center;
+    margin: 0;
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+}
