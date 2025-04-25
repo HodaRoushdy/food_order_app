@@ -1,16 +1,38 @@
 import { createContext } from "react";
 
 const CartContext = createContext({
-    items: []
+    items: [{
+        meal: {},
+        quantity: 0
+    }]
 });
 
 export const cartReducer = (state, action) => {
     console.log(state,"state in reducer")
     switch (action.type) {
         case 'addItem':
-            return { items : [...state.items, action.payload]};
+            {
+                const sameItem = state.items.find(item => item.meal.id === action.payload.id)
+                if (sameItem) {
+                return {
+                    items: state.items.map(item =>
+                        item.meal.id === action.payload.id
+                            ? { ...item, quantity: item.quantity + 1 }
+                            : item
+                    )
+                };
+            } else {
+                return {
+                    items: [...state.items, { meal: action.payload, quantity: 1 }]
+                };
+                }
+            }
         case 'removeItem':
-            return { items : state.items.filter((item) => item.id !== action.payload)};
+            return { items: state.items.filter(item => item.meal.id !== action.payload) };
+         case 'increaseQuantity':
+            return { items: state.items.find(item => item.meal.id === action.payload.id) };
+         case 'decreaseQuantity':
+            return { items : state.items.filter(item => item.meal.id !== action.payload.id) };
         default:
             return state;
     }

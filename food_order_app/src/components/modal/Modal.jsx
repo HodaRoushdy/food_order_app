@@ -27,26 +27,39 @@ const ModalComponent = () => {
     </button>
             
             <Modal footer={<Button onClick={handleCancel}>Close</Button>} title="Your Cart" open={isModalOpen} onCancel={handleCancel}>
-                <div style={{height:'50vh',overflowY:'auto'}}>
-    {state.items.map((item) => (
-        <div className={styles.itemWrapper} >
+                <div style={{ height: '50vh', overflowY: 'auto' }}>
+                    {state.items.map((item) =>
+                    {
+                        const { meal, quantity } = item;
+                        return (
+                <div className={styles.itemWrapper} >
                         <div className={styles.itemInfo}>
                         <div className={styles.shoppingCartItemImg}>
-                        <img src={item.image} alt="" />
+                        <img src={meal.image} alt="" />
                         </div>
                         <div>
-                        <h4>{item.name}</h4>
-                        <p>{item.price} $</p>
+                        <div style={{display:'flex',gap:'0.5rem',alignItems:"center"}}>
+                                            <h4>{meal.name}</h4>
+                            <span>{quantity}</span>
+                                            
+                            <div style={{display:'flex',flexDirection:'column',gap:'0.5rem'}}>
+                            <button>
+                                + 
+                            </button>
+                            <button>
+                                -
+                            </button>
+                            </div>
+                    </div>
+                        <p>{meal.price} $</p>
                         </div>
                         </div>
-
                         <div>
-                            <button className='removeBtn' onClick={()=> dispatch({ type: 'removeItem', payload: item.id })}>Remove</button>
+                            <button className='removeBtn' onClick={()=> dispatch({ type: 'removeItem', payload: meal.id })}>Remove</button>
                         </div>
-                        
-                    
-    </div>
-                ))}
+                </div>
+                    )}
+                )}
                 </div>
             
 
