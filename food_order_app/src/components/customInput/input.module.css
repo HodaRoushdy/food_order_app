@@ -1,3 +1,8 @@
+.form_control{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 .errorMsg {
     color: red;
     font-size: 0.8rem;
