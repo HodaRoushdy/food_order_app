@@ -38,10 +38,19 @@ export const cartReducer = (state, action) => {
                         : item
                 )
             }
-         case 'decreaseQuantity':
-            return { 
-                items : state.items.map(item => item.meal.id === action.payload ? {...item, quantity: item.quantity - 1} : item)
-             };
+        case 'decreaseQuantity':
+            {
+                const theItem = state.items.find(item => item.meal.id === action.payload)
+                if (theItem.quantity === 1) {
+                    return {
+                        items: state.items.filter(item => item.meal.id !== action.payload)
+                    }
+                } else {
+                    return {
+                        items: state.items.map(item => item.meal.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item)
+                    };
+                }
+            }
         default:
             return state;
     }

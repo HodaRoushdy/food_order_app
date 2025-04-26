@@ -18,3 +18,13 @@
 .itemInfo h4{
     line-height: 0.5rem;
 }
+.cartHolder{
+    width: 4rem;
+    height: 3rem;
+    /* background-color: aqua; */
+}
+
+.cartModal{
+    display: flex;
+    align-items: center;
+}
