@@ -1,5 +1,5 @@
 import { Button, Modal } from 'antd';
-import React, { useEffect, useState } from 'react';
+import  { useState } from 'react';
 import { BsCart4 } from "react-icons/bs";
 import { useCartHook } from '../../hooks/useCartHook';
 import styles from './modal.module.css';
@@ -11,7 +11,6 @@ const ModalComponent = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { state, dispatch } = useCartHook();
-    // let [cart, setCart] = useState(<BsCart4 size={'2rem'} />);
 
     const showModal = () => {
     setIsModalOpen(true);
@@ -22,17 +21,13 @@ const ModalComponent = () => {
     setIsModalOpen(false);
     };
 
-    // useEffect(() => {
-    //     setCart(<Lottie animationData={animationData} loop={true} />)
-    // },[state.items])
-
     return (
         <>
             
             <button className={styles.cartModal} onClick={showModal}>
                 <div className={styles.cartHolder}>
-                     <Lottie animationData={animationData} loop={true} />
-               </div>
+                    <Lottie animationData={animationData} loop={true} />
+            </div>
                 <span style={{fontSize:'1.2rem'}}>({state.items.length})</span>
     </button>
             

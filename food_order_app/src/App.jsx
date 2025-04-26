@@ -9,11 +9,11 @@ import { CartProvider } from './store/CartProvider';
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const check = localStorage.getItem('user');
   
   useEffect(() => {
+  const check = localStorage.getItem('user');
     setUserLoggedIn(check ? true : false)
-  },[check])
+  },[])
 
   return (
     <CartProvider>
