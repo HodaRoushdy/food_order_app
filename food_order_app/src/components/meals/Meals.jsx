@@ -3,7 +3,6 @@ import styles from './meals.module.css';
 import { useCartHook } from "../../hooks/useCartHook";
 
 const Meals = () => {
-
     const [meals, setMeals] = useState([]);
     const { dispatch } = useCartHook();
 

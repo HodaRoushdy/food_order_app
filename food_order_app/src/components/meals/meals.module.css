@@ -15,11 +15,6 @@
     border-radius: 1rem;
     background-color: beige;
     overflow: scroll;
-    transition: transform .2s;
-
-}
-.mealCard:hover {
-    transform: scale(1.1);
 }
  .mealCard img:hover{
     transform: scale(1.2);
