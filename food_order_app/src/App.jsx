@@ -14,20 +14,21 @@ function App() {
   const check = localStorage.getItem('user');
     setUserLoggedIn(check ? true : false)
   },[])
+   
+if (!userLoggedIn) {
+  return <UserForm />;
+}
+ 
+return (
+ 
+  <CartProvider>
+<Header />
+<Meals />
+  </CartProvider>
+  
 
-  return (
-    <CartProvider>
-      {
-          userLoggedIn ?
-        <>
-          <Header />
-        <Meals />
-          </> :
-          <UserForm />
-        }
-      
-    </CartProvider>
-  )
+ 
+); 
 }
 
 export default App

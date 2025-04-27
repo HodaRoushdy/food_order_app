@@ -42,6 +42,7 @@ h1 {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #f9f9f9;
   cursor: pointer;
   transition: all 0.25s;
 }

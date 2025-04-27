@@ -7,7 +7,7 @@ const Header = () => {
         
         <header className={styles.header}>
             <div className={styles.logo}>
-                <img src="food.png" alt="" />
+                <img src="food.png" alt="logo" />
             </div>
             <div className={styles.cartIcon} >
                 <ModalComponent/>

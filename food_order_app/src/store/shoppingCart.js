@@ -1,4 +1,6 @@
 import { createContext } from "react";
+import { increaseQuantityLogic } from "../utils/helpers";
+import { ADD_ITEM, DECREASE_QUANTITY, INCREASE_QUANTITY, REMOVE_ITEM } from "../utils/constants";
 
 const CartContext = createContext({
     items: [{
@@ -8,10 +10,10 @@ const CartContext = createContext({
 });
 
 export const cartReducer = (state, action) => {
-    console.log(state,"state in reducer")
+
     switch (action.type) {
-        case 'addItem':
-            {
+        case ADD_ITEM:
+            
                 const sameItem = state.items.find(item => item.meal.id === action.payload.id)
                 if (sameItem) {
                 return {
@@ -26,21 +28,18 @@ export const cartReducer = (state, action) => {
                     items: [...state.items, { meal: action.payload, quantity: 1 }]
                 };
                 }
-            }
-        case 'removeItem':
+            
+        case REMOVE_ITEM:
             return { items: state.items.filter(item => item.meal.id !== action.payload) };
         
-        case 'increaseQuantity':
+        case INCREASE_QUANTITY:
             return {
-                items: state.items.map(item =>
-                    item.meal.id === action.payload
-                        ? { ...item, quantity: item.quantity + 1 }
-                        : item
-                )
+                items : increaseQuantityLogic({ id: action.payload, arr: state.items })
             }
-        case 'decreaseQuantity':
-            {
+        case DECREASE_QUANTITY:
+            
                 const theItem = state.items.find(item => item.meal.id === action.payload)
+                if (!theItem) return state;
                 if (theItem.quantity === 1) {
                     return {
                         items: state.items.filter(item => item.meal.id !== action.payload)
@@ -50,7 +49,7 @@ export const cartReducer = (state, action) => {
                         items: state.items.map(item => item.meal.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item)
                     };
                 }
-            }
+            
         default:
             return state;
     }

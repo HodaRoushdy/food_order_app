@@ -6,3 +6,11 @@ export const checkPassword = (password) => {
     const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
     return password !== '' && passwordRegex.test(password);
 }
+export const increaseQuantityLogic = ({id, arr}) => {
+    return arr.map(item =>
+            item.meal.id === id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+        )
+    
+}
